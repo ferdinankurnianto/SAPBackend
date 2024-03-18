@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2024 at 06:54 AM
+-- Generation Time: Mar 18, 2024 at 12:33 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -60,8 +60,8 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_code`, `product_name`, `qty`) VALUES
-('P001', 'Sepatu', 2),
-('P002', 'Baju', 3),
+('P001', 'Sepatu', 0),
+('P002', 'Baju', 0),
 ('P003', 'Celana', 4);
 
 -- --------------------------------------------------------
@@ -82,7 +82,9 @@ CREATE TABLE `transaction` (
 --
 
 INSERT INTO `transaction` (`transaction_code`, `customer_name`, `product_name`, `qty_out`) VALUES
-('TR000', 'Test', 'Test', 1);
+('TR001', 'Angga Saputra', 'Baju', 1),
+('TR002', 'Bunga Citra', 'Baju', 2),
+('TR003', 'Mitra Septiyani', 'Sepatu', 2);
 
 --
 -- Indexes for dumped tables
@@ -92,19 +94,34 @@ INSERT INTO `transaction` (`transaction_code`, `customer_name`, `product_name`, 
 -- Indexes for table `customer`
 --
 ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customer_code`);
+  ADD PRIMARY KEY (`customer_code`),
+  ADD UNIQUE KEY `customer_name` (`customer_name`);
 
 --
 -- Indexes for table `product`
 --
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`product_code`);
+  ADD PRIMARY KEY (`product_code`),
+  ADD UNIQUE KEY `product_name` (`product_name`);
 
 --
 -- Indexes for table `transaction`
 --
 ALTER TABLE `transaction`
-  ADD PRIMARY KEY (`transaction_code`);
+  ADD PRIMARY KEY (`transaction_code`),
+  ADD KEY `transaction_FK_1` (`customer_name`),
+  ADD KEY `transaction_FK_2` (`product_name`);
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `transaction`
+--
+ALTER TABLE `transaction`
+  ADD CONSTRAINT `transaction_FK_1` FOREIGN KEY (`customer_name`) REFERENCES `customer` (`customer_name`),
+  ADD CONSTRAINT `transaction_FK_2` FOREIGN KEY (`product_name`) REFERENCES `product` (`product_name`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
