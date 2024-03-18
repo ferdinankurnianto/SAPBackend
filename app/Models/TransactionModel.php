@@ -8,7 +8,7 @@ class TransactionModel extends Model {
 	
     protected $returnType     = 'array';
 	
-	protected $allowedFields = ['transaction_code', 'customer_name', 'product_name', 'qty_out'];
+	protected $allowedFields = ['customer_name', 'product_name', 'qty_out'];
 
     function addTransaction($data){
         $this->insert($data);
