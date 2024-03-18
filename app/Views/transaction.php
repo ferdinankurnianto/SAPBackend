@@ -58,15 +58,12 @@
 				</button>
 			  </div>
 			  
-			  <input type="hidden" id="edit" name="edit" value="">
 			  
 			  <div class="modal-body">
 				<form id="formEdit" method="POST" action="" enctype="multipart/form-data">
 
-				  <div class="form-group">
-					<label>Transaction Code</label>
-					<input type="type" class="form-control" id="transaction_code" name="transaction_code" value="">
-				  </div>
+				  <input type="hidden" id="id" name="id" value="">
+
 				  <div class="form-group">
 					<label>Customer Name</label>
 					<select class="form-control" id="customer_name" name="customer_name">
@@ -150,15 +147,15 @@ $(document).ready(function() {
     });
 	
 	$(document).on('click', '#edit', function(){
-		$('.modal-title').html('Edit Transaction');
 		var id = $(this).attr("data-id");
+		$('.modal-title').html('Edit '+id+' Transaction');
 		$.ajax({
 			data: {id},
             url:'<?php echo base_url('transaction/get') ?>',
             method: 'GET',
             dataType: 'json', 
             success: function(result){
-					$('#edit').attr("value", 1);
+					$('#id').attr("value", id);
 					$('#transaction_code').attr("value", result.transaction_code);
 					$('#customer_name').val(result.customer_name);
 					$('#product_name').val(result.product_name);
@@ -176,8 +173,8 @@ $(document).ready(function() {
 		var myForm = document.getElementById('formEdit');
 		var dataSend = new FormData(myForm);
 		console.log(dataSend);
-		var edit = $('#edit').val();
-		if(edit){
+		var id = $('#id').val();
+		if(id){
 			$.ajax({
 				url:'<?php echo base_url('transaction/edit') ?>',
 				data:dataSend,

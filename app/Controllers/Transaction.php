@@ -89,7 +89,7 @@ class Transaction extends BaseController
 		echo json_encode($result);
 	}
 	public function edit(){
-		$id = $this->request->getPost('transaction_code');
+		$id = $this->request->getPost('id');
 		$data =[
 			'customer_name' => $this->request->getPost('customer_name'),
 			'product_name' => $this->request->getPost('product_name'),
@@ -133,7 +133,7 @@ class Transaction extends BaseController
 
 		$this->db->transBegin();
 		$this->transactionModel->deleteTransaction($id);
-		$this->productModel->addQty($product_name, $qty_out);
+		$this->productModel->addQty($product_name['product_name'], $qty_out['qty_out']);
 
 		if($this->db->transStatus() === false){
 			$result['message'] = 'Delete Failed';
