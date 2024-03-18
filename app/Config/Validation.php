@@ -41,4 +41,22 @@ class Validation extends BaseConfig
     // --------------------------------------------------------------------
     // Rules
     // --------------------------------------------------------------------
+    public $transaction = [
+        'customer_name' => 'required',
+        'product_name' => 'required',
+        'qty_out' => 'required|is_natural_no_zero',
+    ];
+
+    public $transaction_errors = [
+        'customer_name' => [
+			'required' => 'Customer Name is required.'
+		],
+        'product_name' => [
+			'required' => 'Product Name is required.'
+		],
+        'qty_out' => [
+			'required' => 'Quantity is required.',
+            'is_natural_no_zero' => 'Quantity must be number greater than 0.',
+		],
+    ];
 }

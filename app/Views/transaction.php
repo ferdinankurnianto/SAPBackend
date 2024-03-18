@@ -184,11 +184,16 @@ $(document).ready(function() {
 				dataType:'JSON',
 				success:function(result){
 					var alert = '<div class="alert alert-danger" role="alert">';
-					if(result.status){
+					if(result.status==true){
 						$('.modal-body').html('<div class="alert alert-primary" role="alert">'
 						+result.message+'</div>');
 						$('#btnSubmit').hide();
 						$('#btnClose').attr('onclick','window.location.reload()');
+					} else if(result.status=='validation'){
+						$.each(result.errors, function(index, value){
+							alert += '<li>'+value+'</li>';
+						});
+						$('.modal-body').prepend(alert+'</div>');
 					} else {
 						$('.modal-body').prepend(alert+result.message+'</div>');
 					}
@@ -204,11 +209,16 @@ $(document).ready(function() {
 				dataType:'JSON',
 				success:function(result){
 					var alert = '<div class="alert alert-danger" role="alert">';
-					if(result.status){
+					if(result.status==true){
 						$('.modal-body').html('<div class="alert alert-primary" role="alert">'
 						+result.message+'</div>');
 						$('#btnSubmit').hide();
 						$('#btnClose').attr('onclick','window.location.reload()');
+					} else if(result.status=='validation'){
+						$.each(result.errors, function(index, value){
+							alert += '<li>'+value+'</li>';
+						});
+						$('.modal-body').prepend(alert+'</div>');
 					} else {
 						$('.modal-body').prepend(alert+result.message+'</div>');
 					}
