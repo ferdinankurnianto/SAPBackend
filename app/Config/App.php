@@ -24,7 +24,7 @@ class App extends BaseConfig
      *
      * @var string
      */
-    public $baseURL = 'http://localhost/testsapx/public/';
+    public $baseURL = 'http://localhost/SAPBackend/public/';
 
     /**
      * --------------------------------------------------------------------------
