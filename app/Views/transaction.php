@@ -58,6 +58,8 @@
 				</button>
 			  </div>
 			  
+			  <input type="hidden" id="edit" name="edit" value="">
+			  
 			  <div class="modal-body">
 				<form id="formEdit" method="POST" action="" enctype="multipart/form-data">
 
@@ -69,15 +71,16 @@
 					<label>Customer Name</label>
 					<select class="form-control" id="customer_name" name="customer_name">
 						<?php
+							print_r($customer_name);
 							foreach($customer_name as $name){
-								echo	"<option value=".$name["customer_name"].">".$name["customer_name"]."</option>";
+								echo	"<option value='".$name["customer_name"]."'>".$name["customer_name"]."</option>";
 							}
 						?>
 					</select>
 				  </div>
 				  <div class="form-group">
 					<label>Product Name</label>
-					<select class="form-control" id="customer_name" name="customer_name">
+					<select class="form-control" id="product_name" name="product_name">
 						<?php
 							foreach($product_name as $name){
 								echo	"<option value=".$name["product_name"].">".$name["product_name"]."</option>";
@@ -155,9 +158,10 @@ $(document).ready(function() {
             method: 'GET',
             dataType: 'json', 
             success: function(result){
+					$('#edit').attr("value", 1);
 					$('#transaction_code').attr("value", result.transaction_code);
-					$('#customer_name').attr("value", result.customer_name);
-					$('#product_name').attr("value", result.product_name);
+					$('#customer_name').val(result.customer_name);
+					$('#product_name').val(result.product_name);
 					$('#qty_out').attr("value", result.qty_out);
 			}
 		});
@@ -171,8 +175,9 @@ $(document).ready(function() {
 	$('#btnSubmit').click(function(){
 		var myForm = document.getElementById('formEdit');
 		var dataSend = new FormData(myForm);
-		var id = $('#id').val();
-		if(id){
+		console.log(dataSend);
+		var edit = $('#edit').val();
+		if(edit){
 			$.ajax({
 				url:'<?php echo base_url('transaction/edit') ?>',
 				data:dataSend,
@@ -188,10 +193,7 @@ $(document).ready(function() {
 						$('#btnSubmit').hide();
 						$('#btnClose').attr('onclick','window.location.reload()');
 					} else {
-						$.each(result.message, function(index, value){
-							alert += '<li>'+value+'</li>';
-						});
-						$('.modal-body').prepend(alert+'</div>');
+						$('.modal-body').prepend(alert+result.message+'</div>');
 					}
 				}
 			})
@@ -211,10 +213,7 @@ $(document).ready(function() {
 						$('#btnSubmit').hide();
 						$('#btnClose').attr('onclick','window.location.reload()');
 					} else {
-						$.each(result.message, function(index, value){
-							alert += '<li>'+value+'</li>';
-						});
-						$('.modal-body').prepend(alert+'</div>');
+						$('.modal-body').prepend(alert+result.message+'</div>');
 					}
 				}
 			})
@@ -237,10 +236,7 @@ $(document).ready(function() {
 					$('#btnYes').hide();
 					$('#btnCls').attr('onclick','window.location.reload()');
 				} else {
-					$.each(result.message, function(index, value){
-						alert += '<li>'+value+'</li>';
-					});
-					$('.modal-body').prepend(alert+'</div>');
+					$('.modal-body').prepend(alert+result.message+'</div>');
 				}
             }
         });

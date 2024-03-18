@@ -16,6 +16,6 @@ class Customer extends BaseController
 			$data['customer'] = "No ID";
 		}
 		
-        echo json_encode($data['laguPujian']);
+        echo json_encode($data['customer']);
     }
 }
