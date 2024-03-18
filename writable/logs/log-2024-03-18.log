@@ -1,0 +1,61 @@
+CRITICAL - 2024-03-18 00:05:47 --> Undefined variable $no
+in APPPATH\Controllers\Transaction.php on line 20.
+ 1 APPPATH\Controllers\Transaction.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $no', 'APPPATH\\Controllers\\Transaction.php', 20)
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Transaction->getAll()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaction))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-18 00:06:09 --> Undefined variable $no
+in APPPATH\Controllers\Transaction.php on line 20.
+ 1 APPPATH\Controllers\Transaction.php(20): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $no', 'APPPATH\\Controllers\\Transaction.php', 20)
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Transaction->getAll()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaction))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-18 00:28:01 --> Undefined variable $builder
+in APPPATH\Models\CustomerModel.php on line 16.
+ 1 APPPATH\Models\CustomerModel.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $builder', 'APPPATH\\Models\\CustomerModel.php', 16)
+ 2 APPPATH\Controllers\Transaction.php(13): App\Models\CustomerModel->customer_name()
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Transaction->index()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaction))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-18 00:30:39 --> Call to undefined method App\Models\CustomerModel::product_name
+in SYSTEMPATH\Model.php on line 774.
+ 1 APPPATH\Controllers\Transaction.php(14): CodeIgniter\Model->__call('product_name', [])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Transaction->index()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaction))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-18 00:31:27 --> Array to string conversion
+in APPPATH\Views\transaction.php on line 73.
+ 1 APPPATH\Views\transaction.php(73): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'APPPATH\\Views\\transaction.php', 73)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\transaction.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('transaction', [], true)
+ 5 APPPATH\Controllers\Transaction.php(15): view('transaction', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Transaction->index()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaction))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-18 00:33:27 --> Undefined variable $customername
+in APPPATH\Views\transaction.php on line 72.
+ 1 APPPATH\Views\transaction.php(72): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $customername', 'APPPATH\\Views\\transaction.php', 72)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\transaction.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('transaction', [], true)
+ 5 APPPATH\Controllers\Transaction.php(15): view('transaction', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Transaction->index()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaction))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-18 00:33:52 --> Undefined constant "customer_name"
+in APPPATH\Views\transaction.php on line 72.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('transaction', [], true)
+ 4 APPPATH\Controllers\Transaction.php(15): view('transaction', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Transaction->index()
+ 6 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Transaction))
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
