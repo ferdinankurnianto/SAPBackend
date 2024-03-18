@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 18, 2024 at 12:33 PM
+-- Generation Time: Mar 18, 2024 at 01:32 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -62,7 +62,7 @@ CREATE TABLE `product` (
 INSERT INTO `product` (`product_code`, `product_name`, `qty`) VALUES
 ('P001', 'Sepatu', 0),
 ('P002', 'Baju', 0),
-('P003', 'Celana', 4);
+('P003', 'Celana', 2);
 
 -- --------------------------------------------------------
 
@@ -71,7 +71,7 @@ INSERT INTO `product` (`product_code`, `product_name`, `qty`) VALUES
 --
 
 CREATE TABLE `transaction` (
-  `transaction_code` varchar(10) NOT NULL,
+  `transaction_code` varchar(20) NOT NULL,
   `customer_name` varchar(100) NOT NULL,
   `product_name` varchar(100) NOT NULL,
   `qty_out` int(100) NOT NULL
@@ -84,7 +84,39 @@ CREATE TABLE `transaction` (
 INSERT INTO `transaction` (`transaction_code`, `customer_name`, `product_name`, `qty_out`) VALUES
 ('TR001', 'Angga Saputra', 'Baju', 1),
 ('TR002', 'Bunga Citra', 'Baju', 2),
-('TR003', 'Mitra Septiyani', 'Sepatu', 2);
+('TR003', 'Mitra Septiyani', 'Sepatu', 2),
+('TR004', 'Mitra Septiyani', 'Celana', 2);
+
+--
+-- Triggers `transaction`
+--
+DELIMITER $$
+CREATE TRIGGER `tg_transactioncode_prefix` BEFORE INSERT ON `transaction` FOR EACH ROW BEGIN
+INSERT INTO transaction_seq VALUES (NULL);
+SET NEW.transaction_code = CONCAT('TR', LPAD(LAST_INSERT_ID(), 3, '0'));
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `transaction_seq`
+--
+
+CREATE TABLE `transaction_seq` (
+  `id` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `transaction_seq`
+--
+
+INSERT INTO `transaction_seq` (`id`) VALUES
+(1),
+(2),
+(3),
+(4);
 
 --
 -- Indexes for dumped tables
@@ -111,6 +143,22 @@ ALTER TABLE `transaction`
   ADD PRIMARY KEY (`transaction_code`),
   ADD KEY `transaction_FK_1` (`customer_name`),
   ADD KEY `transaction_FK_2` (`product_name`);
+
+--
+-- Indexes for table `transaction_seq`
+--
+ALTER TABLE `transaction_seq`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `transaction_seq`
+--
+ALTER TABLE `transaction_seq`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables
